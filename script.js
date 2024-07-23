@@ -1,4 +1,3 @@
-//your JS code here. If required.
 function getRandomTime(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -18,7 +17,9 @@ const output = document.getElementById('output');
 const loadingRow = document.getElementById('loading');
 
 Promise.all(promises).then((results) => {
-  loadingRow.remove();
+  if (loadingRow) {
+    loadingRow.remove();
+  }
 
   results.forEach(result => {
     const row = document.createElement('tr');
