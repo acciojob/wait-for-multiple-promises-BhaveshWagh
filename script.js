@@ -34,7 +34,7 @@ Promise.all(promises).then((results) => {
     const timeCell = document.createElement('td');
 
     nameCell.textContent = `Promise ${result.index}`;
-    timeCell.textContent = result.time.toFixed(3);
+    timeCell.textContent = Math.round(result.time);
 
     row.appendChild(nameCell);
     row.appendChild(timeCell);
@@ -47,7 +47,7 @@ Promise.all(promises).then((results) => {
   const totalTimeCell = document.createElement('td');
 
   totalNameCell.textContent = 'Total';
-  totalTimeCell.textContent = totalTime.toFixed(3);
+  totalTimeCell.textContent = Math.round(totalTime);
 
   totalTimeRow.appendChild(totalNameCell);
   totalTimeRow.appendChild(totalTimeCell);
