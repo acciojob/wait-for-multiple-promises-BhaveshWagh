@@ -28,7 +28,7 @@ Promise.all(promises).then((results) => {
   outputTable.removeChild(loadingRow);
 
   // Populate the table with the required values
-  results.forEach((result) => {
+  const rows = results.map((result) => {
     const row = document.createElement('tr');
     const nameCell = document.createElement('td');
     const timeCell = document.createElement('td');
@@ -38,10 +38,9 @@ Promise.all(promises).then((results) => {
 
     row.appendChild(nameCell);
     row.appendChild(timeCell);
-    outputTable.appendChild(row);
+    return row;
   });
 
-  // Add a row for the total time taken
   const totalTimeRow = document.createElement('tr');
   const totalTime = results.reduce((sum, result) => sum + result.time, 0);
   const totalNameCell = document.createElement('td');
@@ -52,5 +51,8 @@ Promise.all(promises).then((results) => {
 
   totalTimeRow.appendChild(totalNameCell);
   totalTimeRow.appendChild(totalTimeCell);
-  outputTable.appendChild(totalTimeRow);
+
+  rows.push(totalTimeRow);
+
+  rows.forEach((row) => outputTable.appendChild(row));
 });
